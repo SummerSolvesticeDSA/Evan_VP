@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    bool isDigitSumPalindrome(int n) {
+        int sum=0;
+        
+        while(n>0){
+        int d=n%10;
+        sum+=d;
+        n=n/10;
+    }
+     if (sum < 0 || (sum % 10 == 0 && sum != 0))
+        return 0;
+
+    int rev = 0;
+    while (sum > rev) {
+        rev = rev * 10 + sum % 10;
+        sum /= 10;
+    }
+
+    return sum == rev || sum == rev / 10;
+}
+};
